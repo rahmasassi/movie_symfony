@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rate Movie{% endblock %}
+
+{% block body %}
+    <section class="main">
+
+        <div class ="container">
+            <h2>{{ movie.name }}</h2>
+            <video src="/video/{{ movie.video }}" height="700" width="1110" controls></video>
+            <table class="table" id="table-movies">
+                <tbody>
+
+                <tr>
+                    <th>Name</th>
+                    <td>{{ movie.name }}</td>
+                </tr>
+                <tr>
+                    <th>Release Year</th>
+                    <td>{{ movie.year }}</td>
+                </tr>
+                <tr>
+                    <th>Rating</th>
+                    <td>{{ movie.rating }}{{ " stars" }}</td>
+                </tr>
+                <tr>
+                    <th>Cast</th>
+                    <td>{{ movie.mainCast }}</td>
+                </tr>
+                <tr>
+                    <th>Director</th>
+                    <td>{{ movie.director.name }} </td>
+                </tr>
+                <tr>
+                    <th>Synopsis</th>
+                    <td>{{ movie.synopsis }}</td>
+                </tr>
+                <tr>
+                    <th>Genre</th>
+                    <td>
+                        {% for movieGenre in movie.genres %}
+                            {% if loop.first %}
+                                {{ movieGenre.type }}
+                            {% else %}
+                                {{ "/" }}{{movieGenre.type }}
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            {# Rating form #}
+            <h5>Provide a Movie Review</h5>
+            <br>
+            <div class="container">
+                <div class="star-rating">
+                    <form  action="{{ path('review_score',{'id': movie.id}) }}" method="post">
+                        <div class="stars">
+                            <input type="radio" name='stars' value='5' id='five' class='star'  >
+                            <label for="five"><i class='fa fa-star'></i></label>
+                            <input type="radio" name='stars' value='4' id='four' class='star'>
+                            <label for="four"><i class='fa fa-star'></i></label>
+                            <input type="radio" name='stars' value='3' id='three' class='star'>
+                            <label for="three"><i class='fa fa-star'></i></label>
+                            <input type="radio" name='stars' value='2' id='two' class='star'>
+                            <label for="two"><i class='fa fa-star'></i></label>
+                            <input type="radio" name='stars' value='1' id='one' class='star' checked >
+                            <label for="one"><i class='fa fa-star '></i></label>
+                        </div>
+                        <div id="block-star">
+                            <input type="submit" name="submit" value="Submit" class="button alt" id="rate-submit" />
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+
+
+

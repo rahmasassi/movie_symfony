@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {# Banner Section#}
+
+    <section id="banner">
+        <div class="inner">
+            <h1>The Open Movie Database </h1>
+
+            <ul class="actions">
+                <li><a href="{{ path('movie_index') }}" class="button start">Explore</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row d-flex">
+                <div class="col md-4 ">
+                    <span class="icon fa fa-laptop"></span>
+                    <header>
+                        <h3>New Movie</h3>
+                    </header>
+                    <p>Add a new movie to the database. It's quick and easy. Follow the simple steps on the create form to get started. </p>
+                    <div>
+                        <a class="button alt" href="{{ path('movie_new') }}">Create Movie</a>
+                    </div>
+
+                </div>
+                <div class="col md-4 ">
+                    <span class="icon fa fa-edit"></span>
+                    <header>
+                        <h3>Edit Movies</h3>
+                    </header>
+                    <p>Edit a movie in the database. It's quick and easy. Follow the simple steps on the edit form to get started. </p>
+                    <div>
+                        <a class="button alt" href="{{ path('movie_index') }}">Update Movie</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="ftco-section " id="sub-service">
+        <div class="container">
+            <div class="row d-flex">
+                <div class="col-lg-6">
+                    <h4>Genres</h4>
+                    <div class="img-service">
+                        <img src="{{ asset('images/genre-img.jpeg') }}" id="image-fit">
+                    </div>
+                    <p>Get the list of all Genre in the database. Create, update and delete the genre information. Search for genre and their corresponding movies.</p>
+
+                    <div>
+                        <a class="button alt" href="{{ path('genre_index') }}">Click Here</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h4>Directors</h4>
+                    <div class="img-service">
+                        <img src="{{ asset('images/director-img.jpeg') }}" id="image-fit">
+                    </div>
+                    <p>Get the list of all Directors in the database. Create, update and delete the director information. Search for movies they directed.</p>
+
+                    <div>
+                        <a class="button alt" href="{{ path('director_index') }}">Click Here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}
+

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Director List{% endblock %}
+
+{% block body %}
+<section class="main">
+    <div class ="container">
+    <h2>Director Index</h2>
+        <div class="table-responsive">
+    <table class="table" id="table-genre">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for director in directors %}
+            <tr>
+                <td>{{ director.id }}</td>
+                <td>{{ director.name }}</td>
+                <td>
+                    <a href="{{ path('director_show', {'id': director.id}) }}" style="color: #B0413E" >show</a>
+                    <a href="{{ path('director_edit', {'id': director.id}) }}" style="color: #B0413E">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+    <div class="list">
+        <a href="{{ path('director_new') }}" class="button alt">Create new</a>
+    </div>
+
+    </div>
+</section>
+{% endblock %}
